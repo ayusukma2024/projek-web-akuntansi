@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Akuntansi Seru — Belajar Akuntansi Jadi Lebih Mudah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F2A4A; --teal:#0E7C7B; --teal-d:#0B615F; --gold:#F2A93B; --coral:#E8604C; --green:#2E9E5B; --red:#D64545;
+  --bg:#F7F9FC; --card:#FFFFFF; --line:#E3E8F0; --ink:#14213D; --sub:#5A6B85; --shadow:0 6px 18px rgba(15,42,74,.08);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1420;--card:#152238;--line:#223252;--ink:#EAF0FB;--sub:#9AACC7;}}
+:root[data-theme="dark"]{--bg:#0D1420;--card:#152238;--line:#223252;--ink:#EAF0FB;--sub:#9AACC7;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden;}
+h1,h2,h3,h4,.brand,.btn{font-family:'Poppins',sans-serif;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+img{max-width:100%;}
+.container{max-width:1100px;margin:0 auto;padding:0 22px;}
+.section{padding:70px 0;}
+.section-alt{background:var(--card);}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 42px;}
+.sec-head .tag{color:var(--teal);font-weight:700;font-size:.82rem;letter-spacing:1.5px;text-transform:uppercase;}
+.sec-head h2{font-size:2rem;margin:6px 0 10px;}
+.sec-head p{color:var(--sub);margin:0;}
+
+/* NAVBAR */
+header{position:sticky;top:0;z-index:200;background:rgba(247,249,252,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+:root[data-theme="dark"] header,@media(prefers-color-scheme:dark){header{background:rgba(13,20,32,.92);}}
+.navwrap{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1100px;margin:0 auto;}
+.brand{font-weight:800;font-size:1.25rem;color:var(--navy);display:flex;align-items:center;gap:8px;}
+:root[data-theme="dark"] .brand{color:var(--ink);}
+.navlinks{display:flex;gap:4px;list-style:none;margin:0;padding:0;}
+.navlinks a{padding:9px 14px;border-radius:9px;font-weight:600;font-size:.92rem;color:var(--ink);transition:.15s;}
+.navlinks a:hover{background:var(--teal);color:#fff;}
+.hamburger{display:none;flex-direction:column;gap:5px;width:30px;}
+.hamburger span{height:3px;background:var(--ink);border-radius:2px;transition:.2s;}
+@media(max-width:860px){
+  .navlinks{position:fixed;top:64px;left:0;right:0;background:var(--card);flex-direction:column;padding:10px 18px 20px;border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .navlinks.open{max-height:500px;}
+  .navlinks a{display:block;padding:12px 6px;border-bottom:1px solid var(--line);border-radius:0;}
+  .hamburger{display:flex;}
+}
+
+/* HERO */
+.hero{padding:70px 0 50px;}
+.hero-grid{display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
+.hero-txt{flex:1;min-width:280px;}
+.eyebrow{display:inline-block;background:#E6F4F1;color:var(--teal-d);font-weight:700;font-size:.78rem;padding:6px 14px;border-radius:999px;margin-bottom:16px;}
+:root[data-theme="dark"] .eyebrow{background:#163B3A;color:#6FD3C9;}
+.hero h1{font-size:2.6rem;line-height:1.15;margin:0 0 14px;color:var(--navy);}
+:root[data-theme="dark"] .hero h1{color:var(--ink);}
+.hero p{color:var(--sub);font-size:1.08rem;margin:0 0 26px;}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{padding:14px 26px;border-radius:12px;font-weight:700;font-size:.98rem;transition:.15s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 6px 16px rgba(14,124,123,.3);}
+.btn-primary:hover{background:var(--teal-d);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--navy);border:2px solid var(--line);}
+:root[data-theme="dark"] .btn-outline{color:var(--ink);}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);}
+.hero-visual{flex:1;min-width:260px;display:flex;justify-content:center;}
+
+/* CARD GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);transition:.18s;}
+.card:hover{transform:translateY(-4px);}
+.card .ic{width:50px;height:50px;border-radius:12px;background:#E6F4F1;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px;}
+:root[data-theme="dark"] .card .ic{background:#163B3A;}
+.card h3{margin:0 0 6px;font-size:1.08rem;}
+.card p{color:var(--sub);font-size:.9rem;margin:0 0 16px;}
+.card .link-btn{color:var(--teal);font-weight:700;font-size:.9rem;}
+
+/* PROGRESS */
+.progress-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow);margin-top:40px;}
+.progress-box h4{margin:0 0 12px;font-size:.95rem;color:var(--sub);}
+.bar-bg{background:var(--line);height:12px;border-radius:999px;overflow:hidden;}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:999px;transition:width .4s;}
+.stat-row{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px;font-size:.88rem;font-weight:700;color:var(--sub);}
+
+/* MATERI */
+.materi-tabs{display:flex;gap:8px;overflow-x:auto;margin-bottom:26px;padding-bottom:6px;}
+.mtab{flex-shrink:0;padding:10px 16px;border-radius:999px;border:2px solid var(--line);font-weight:700;font-size:.85rem;color:var(--sub);background:var(--card);}
+.mtab.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.materi-panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow);}
+.materi-panel.active{display:block;}
+.materi-panel h3{color:var(--navy);margin-top:0;}
+:root[data-theme="dark"] .materi-panel h3{color:var(--ink);}
+.acc-item{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;}
+.acc-head{width:100%;text-align:left;padding:14px 18px;font-weight:700;display:flex;justify-content:space-between;align-items:center;background:var(--bg);}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .25s ease;padding:0 18px;}
+.acc-body-in{padding:14px 0;color:var(--sub);font-size:.92rem;line-height:1.6;}
+.acc-item.open .acc-body{max-height:900px;}
+table.data{width:100%;border-collapse:collapse;margin:14px 0;font-size:.85rem;}
+table.data th,table.data td{border:1px solid var(--line);padding:8px 10px;text-align:left;}
+table.data th{background:var(--bg);}
+.materi-nav{display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;}
+.chip{display:inline-block;background:#FFF4E2;color:#8A5A00;font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:999px;margin-left:8px;}
+:root[data-theme="dark"] .chip{background:#3A2E0E;color:#F2CE86;}
+
+/* VIDEO */
+.vidcard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);}
+.vidthumb{aspect-ratio:16/9;background:linear-gradient(135deg,var(--navy),var(--teal));display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;}
+.playbtn{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--teal);transition:.15s;}
+.vidthumb:hover .playbtn{transform:scale(1.1);}
+.vidbody{padding:16px 18px;}
+.vidbody h4{margin:0 0 4px;font-size:1rem;}
+.vidbody p{margin:0;color:var(--sub);font-size:.85rem;}
+.vidplaying{background:var(--navy);color:#fff;text-align:center;padding:16px;font-size:.85rem;}
+
+/* LATIHAN */
+.quiz-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:var(--shadow);max-width:680px;margin:0 auto;}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-size:.85rem;font-weight:700;color:var(--sub);}
+.quiz-q{font-size:1.1rem;font-weight:700;margin:0 0 18px;}
+.quiz-opts{display:grid;gap:10px;}
+.qopt{text-align:left;padding:13px 16px;border:2px solid var(--line);border-radius:12px;font-weight:600;font-size:.95rem;}
+.qopt.correct{background:#E3F6E9;border-color:var(--green);}
+.qopt.wrong{background:#FBE4E0;border-color:var(--red);}
+.qopt:disabled{cursor:default;}
+.explain{margin-top:16px;padding:14px 16px;background:var(--bg);border-radius:12px;font-size:.88rem;display:none;}
+.quiz-foot{margin-top:20px;display:flex;justify-content:flex-end;}
+.result-card{text-align:center;}
+.result-card .score-big{font-size:3rem;font-weight:800;color:var(--teal);margin:10px 0;}
+.result-card .kategori{display:inline-block;padding:8px 20px;border-radius:999px;font-weight:700;margin-bottom:18px;}
+
+/* GAME */
+.gametabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;}
+.gtab{padding:10px 18px;border-radius:999px;border:2px solid var(--line);font-weight:700;font-size:.88rem;background:var(--card);}
+.gtab.active{background:var(--coral);border-color:var(--coral);color:#fff;}
+.gpanel{display:none;}
+.gpanel.active{display:block;}
+.game-box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow);max-width:680px;margin:0 auto;}
+.game-stats{display:flex;gap:20px;font-weight:700;font-size:.85rem;color:var(--sub);margin-bottom:16px;flex-wrap:wrap;}
+.trx-display{background:var(--bg);border:2px dashed var(--line);border-radius:14px;padding:18px;font-size:1.05rem;font-weight:700;text-align:center;margin-bottom:18px;}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;}
+.choicebtn{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:13px;font-weight:700;}
+.choicebtn.debit{border-color:#4C7EF3;} .choicebtn.kredit{border-color:var(--gold);}
+.gfeedback{margin-top:14px;font-weight:700;text-align:center;}
+.gfeedback.ok{color:var(--green);} .gfeedback.no{color:var(--red);}
+.jq-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.jq-row select,.jq-row input{padding:9px;border-radius:9px;border:2px solid var(--line);font-family:inherit;font-weight:600;background:var(--card);color:var(--ink);}
+.start-screen{text-align:center;padding:20px 0;}
+
+/* KALKULATOR */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:760px){.calc-grid{grid-template-columns:1fr;}}
+.calc-box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow);}
+.calc-display{background:var(--navy);color:#fff;border-radius:12px;padding:16px;font-size:1.6rem;font-weight:700;text-align:right;margin-bottom:14px;word-break:break-all;min-height:32px;}
+.calc-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.calc-keys button{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 0;font-weight:700;font-size:1.05rem;}
+.calc-keys button.op{background:var(--teal);color:#fff;}
+.calc-keys button.eq{background:var(--coral);color:#fff;}
+.pe-field{margin-bottom:14px;}
+.pe-field label{display:block;font-weight:700;font-size:.85rem;margin-bottom:6px;color:var(--sub);}
+.pe-field input{width:100%;padding:11px;border-radius:9px;border:2px solid var(--line);font-family:inherit;background:var(--bg);color:var(--ink);}
+.pe-result{margin-top:14px;background:#E6F4F1;border-radius:12px;padding:14px;font-weight:700;text-align:center;color:var(--teal-d);}
+:root[data-theme="dark"] .pe-result{background:#163B3A;color:#6FD3C9;}
+
+/* KAMUS */
+.search-box{max-width:460px;margin:0 auto 28px;position:relative;}
+.search-box input{width:100%;padding:14px 18px 14px 44px;border-radius:12px;border:2px solid var(--line);font-size:.95rem;font-family:inherit;background:var(--card);color:var(--ink);}
+.search-box .ico{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--sub);}
+.kamus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.kword{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:700;text-align:left;}
+.kword:hover{border-color:var(--teal);}
+.kdetail{margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow);display:none;}
+.kdetail.show{display:block;}
+.kdetail h3{margin:0 0 8px;color:var(--teal-d);}
+
+/* BADGE */
+.badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
+.badgec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;}
+.badgec.locked{opacity:.38;filter:grayscale(1);}
+.badgec .bic{font-size:2.2rem;}
+.badgec h4{margin:8px 0 2px;font-size:.88rem;}
+
+/* FAQ */
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;}
+.faq-q{width:100%;text-align:left;padding:16px 20px;font-weight:700;display:flex;justify-content:space-between;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;padding:0 20px;color:var(--sub);font-size:.92rem;}
+.faq-item.open .faq-a{max-height:260px;padding-bottom:16px;}
+
+/* TIPS */
+.tip-item{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;align-items:flex-start;}
+.tip-num{background:var(--teal);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;}
+
+footer{background:var(--navy);color:#CBD8EE;padding:46px 0 24px;}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;}
+.foot-brand{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.2rem;color:#fff;}
+footer ul{list-style:none;padding:0;margin:10px 0 0;}
+footer ul li{margin-bottom:8px;}
+footer ul li a:hover{color:#fff;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:18px;text-align:center;font-size:.82rem;color:#8FA2C2;}
+
+@media(max-width:600px){
+  .hero h1{font-size:2rem;}
+  .section{padding:50px 0;}
+  .materi-panel{padding:20px;}
+  .quiz-card,.game-box{padding:22px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navwrap">
+    <div class="brand">🧮 Akuntansi Seru</div>
+    <button class="hamburger" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="navlinks" id="navLinks">
+      <li><a href="#beranda">Beranda</a></li>
+      <li><a href="#materi">Materi</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#latihan">Latihan</a></li>
+      <li><a href="#game">Game</a></li>
+      <li><a href="#kamus">Kamus Akuntansi</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- BERANDA -->
+<section id="beranda" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-txt">
+      <span class="eyebrow">Untuk Siswa SMK Kelas X Akuntansi</span>
+      <h1>Belajar Akuntansi Jadi Lebih Seru!</h1>
+      <p>Pelajari konsep dasar akuntansi melalui materi interaktif, contoh transaksi, latihan soal, dan permainan edukatif.</p>
+      <div class="btn-row">
+        <a href="#materi" class="btn btn-primary">📖 Mulai Belajar</a>
+        <a href="#latihan" class="btn btn-outline">📝 Kerjakan Latihan</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg width="280" height="260" viewBox="0 0 280 260">
+        <rect x="30" y="60" width="150" height="180" rx="14" fill="#fff" stroke="#E3E8F0" stroke-width="2"/>
+        <rect x="46" y="80" width="118" height="10" rx="4" fill="#0E7C7B"/>
+        <rect x="46" y="100" width="90" height="8" rx="4" fill="#E3E8F0"/>
+        <rect x="46" y="116" width="110" height="8" rx="4" fill="#E3E8F0"/>
+        <rect x="46" y="140" width="118" height="1" fill="#E3E8F0"/>
+        <rect x="46" y="156" width="60" height="8" rx="4" fill="#F2A93B"/>
+        <rect x="120" y="156" width="40" height="8" rx="4" fill="#2E9E5B"/>
+        <rect x="46" y="176" width="60" height="8" rx="4" fill="#F2A93B"/>
+        <rect x="120" y="176" width="40" height="8" rx="4" fill="#E8604C"/>
+        <circle cx="205" cy="90" r="46" fill="#0E7C7B"/>
+        <text x="205" y="100" text-anchor="middle" font-size="34" fill="#fff" font-family="Poppins">Rp</text>
+        <rect x="165" y="160" width="95" height="70" rx="12" fill="#0F2A4A"/>
+        <rect x="177" y="172" width="71" height="14" rx="3" fill="#F2A93B"/>
+        <rect x="177" y="194" width="14" height="14" rx="3" fill="#fff"/>
+        <rect x="197" y="194" width="14" height="14" rx="3" fill="#fff"/>
+        <rect x="217" y="194" width="14" height="14" rx="3" fill="#fff"/>
+        <rect x="177" y="212" width="14" height="14" rx="3" fill="#fff"/>
+        <rect x="197" y="212" width="14" height="14" rx="3" fill="#fff"/>
+        <rect x="217" y="212" width="14" height="14" rx="3" fill="#fff"/>
+      </svg>
+    </div>
+  </div>
+  <div class="container">
+    <div class="progress-box">
+      <h4>PROGRES BELAJARMU</h4>
+      <div class="bar-bg"><div class="bar-fill" id="homeBar" style="width:0%"></div></div>
+      <div class="stat-row">
+        <span>📚 Materi selesai: <span id="homeMateri">0</span>/6</span>
+        <span>📝 Latihan terbaik: <span id="homeLatihan">0</span>%</span>
+        <span>🎮 Poin game: <span id="homePoin">0</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Kurikulum</span><h2>Yang Akan Kamu Pelajari</h2><p>Enam topik inti akuntansi dasar, disusun berurutan agar mudah dipahami.</p></div>
+    <div class="grid" id="overviewGrid"></div>
+  </div>
+</section>
+
+<!-- MATERI -->
+<section id="materi" class="section">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Belajar</span><h2>Materi Pembelajaran</h2><p>Klik tab untuk berpindah materi. Jangan lupa tandai materi yang sudah kamu pelajari!</p></div>
+    <div class="materi-tabs" id="materiTabs"></div>
+    <div id="materiPanels"></div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="section section-alt">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Tonton</span><h2>Video Pembelajaran</h2><p>Ringkasan materi dalam bentuk video singkat (simulasi pemutar video).</p></div>
+    <div class="grid" id="videoGrid"></div>
+  </div>
+</section>
+
+<!-- LATIHAN -->
+<section id="latihan" class="section">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Uji Kemampuan</span><h2>Latihan Soal</h2><p>15 soal pilihan ganda mencakup seluruh materi dasar akuntansi.</p></div>
+    <div id="quizArea"></div>
+  </div>
+</section>
+
+<!-- GAME -->
+<section id="game" class="section section-alt">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Bermain Sambil Belajar</span><h2>Accounting Games</h2><p>Tiga permainan edukatif untuk mengasah pemahamanmu.</p></div>
+    <div class="gametabs">
+      <button class="gtab active" data-g="1">🕵️ Tebak Akun</button>
+      <button class="gtab" data-g="2">⚖️ Debit/Kredit</button>
+      <button class="gtab" data-g="3">⚡ Jurnal Cepat</button>
+    </div>
+    <div class="gpanel active" id="gpanel1">
+      <div class="game-box">
+        <div class="game-stats"><span>⭐ Skor: <span id="g1score">0</span></span><span>🔢 Soal ke: <span id="g1num">0</span>/8</span></div>
+        <div class="trx-display" id="g1trx">Tekan Mulai untuk bermain</div>
+        <div class="choices" id="g1choices"></div>
+        <div class="gfeedback" id="g1fb"></div>
+        <div style="text-align:center;margin-top:16px;"><button class="btn btn-primary" id="g1start">▶️ Mulai</button></div>
+      </div>
+    </div>
+    <div class="gpanel" id="gpanel2">
+      <div class="game-box">
+        <div class="game-stats"><span>⭐ Skor: <span id="g2score">0</span></span><span>🔢 Soal ke: <span id="g2num">0</span>/8</span><span>⏱️ <span id="g2timer">10</span>s</span></div>
+        <div class="trx-display" id="g2trx">Tekan Mulai untuk bermain</div>
+        <div class="choices">
+          <button class="choicebtn debit" id="g2debit">🔵 Debit</button>
+          <button class="choicebtn kredit" id="g2kredit">🟠 Kredit</button>
+        </div>
+        <div class="gfeedback" id="g2fb"></div>
+        <div style="text-align:center;margin-top:16px;"><button class="btn btn-primary" id="g2start">▶️ Mulai</button></div>
+      </div>
+    </div>
+    <div class="gpanel" id="gpanel3">
+      <div class="game-box">
+        <div class="game-stats"><span>⭐ Skor: <span id="g3score">0</span></span><span>🔢 Soal ke: <span id="g3num">0</span>/6</span></div>
+        <div class="trx-display" id="g3trx">Tekan Mulai untuk bermain</div>
+        <div class="jq-row" id="g3form" style="display:none;justify-content:center;">
+          <select id="g3debit"></select>
+          <select id="g3kredit"></select>
+          <input type="text" id="g3nom" placeholder="Nominal (Rp)" style="width:150px;">
+          <button class="btn btn-primary" id="g3check">✅ Cek</button>
+        </div>
+        <div class="gfeedback" id="g3fb"></div>
+        <div style="text-align:center;margin-top:16px;"><button class="btn btn-primary" id="g3start">▶️ Mulai</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KALKULATOR -->
+<section id="kalkulator" class="section">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Alat Bantu</span><h2>Kalkulator Akuntansi</h2><p>Hitung angka dengan cepat atau cari nilai persamaan dasar akuntansi.</p></div>
+    <div class="calc-grid">
+      <div class="calc-box">
+        <h3>Kalkulator Dasar</h3>
+        <div class="calc-display" id="calcDisplay">0</div>
+        <div class="calc-keys" id="calcKeys"></div>
+      </div>
+      <div class="calc-box">
+        <h3>Kalkulator Persamaan Akuntansi</h3>
+        <p style="color:var(--sub);font-size:.85rem;margin-top:-6px;">Isi dua nilai, satu dikosongkan — sistem akan menghitungnya otomatis.</p>
+        <div class="pe-field"><label>Aset (Rp)</label><input type="number" id="peAset" placeholder="contoh: 10000000"></div>
+        <div class="pe-field"><label>Liabilitas (Rp)</label><input type="number" id="peLiab" placeholder="contoh: 3000000"></div>
+        <div class="pe-field"><label>Ekuitas (Rp)</label><input type="number" id="peEku" placeholder="contoh: 7000000"></div>
+        <button class="btn btn-primary" id="peHitung" style="width:100%;justify-content:center;">Hitung</button>
+        <div class="pe-result" id="peResult" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KAMUS -->
+<section id="kamus" class="section section-alt">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Referensi</span><h2>Kamus Akuntansi</h2><p>Cari istilah akuntansi yang belum kamu pahami.</p></div>
+    <div class="search-box"><span class="ico">🔍</span><input type="text" id="kamusSearch" placeholder="Ketik istilah, misal: Aset, Debit, Jurnal..."></div>
+    <div class="kamus-grid" id="kamusGrid"></div>
+    <div class="kdetail" id="kamusDetail"></div>
+  </div>
+</section>
+
+<!-- PROGRESS & BADGE -->
+<section id="progres" class="section">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Pencapaian</span><h2>Progres &amp; Badge Belajarmu</h2><p>Kumpulkan badge dengan aktif belajar, berlatih, dan bermain.</p></div>
+    <div class="progress-box" style="margin-top:0;margin-bottom:30px;">
+      <h4>RINCIAN PROGRES</h4>
+      <div class="bar-bg"><div class="bar-fill" id="pBar" style="width:0%"></div></div>
+      <div class="stat-row">
+        <span>📚 Materi: <span id="pMateri">0</span>/6</span>
+        <span>📝 Latihan: <span id="pLatihan">0</span>/10 benar (terakhir)</span>
+        <span>🎮 Poin game: <span id="pGame">0</span></span>
+      </div>
+    </div>
+    <div class="badge-grid" id="badgeGrid"></div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Panduan</span><h2>Tips Belajar Akuntansi</h2></div>
+    <div style="max-width:620px;margin:0 auto;" id="tipsList"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Bantuan</span><h2>Pertanyaan Umum (FAQ)</h2></div>
+    <div style="max-width:680px;margin:0 auto;" id="faqList"></div>
+  </div>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang" class="section section-alt">
+  <div class="container">
+    <div class="sec-head"><span class="tag">Tentang Kami</span><h2>Tentang Akuntansi Seru</h2></div>
+    <div style="max-width:620px;margin:0 auto;text-align:center;color:var(--sub);font-size:1.02rem;line-height:1.7;">
+      <p>Akuntansi Seru merupakan media pembelajaran interaktif yang dirancang untuk membantu siswa SMK memahami konsep dasar akuntansi dengan cara yang lebih mudah, visual, dan menyenangkan.</p>
+      <p><b style="color:var(--ink);">Target:</b> Siswa SMK Kelas X Akuntansi dan Keuangan Lembaga.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <div class="foot-brand">🧮 Akuntansi Seru</div>
+      <p style="max-width:260px;font-size:.88rem;margin-top:8px;">Belajar Akuntansi Jadi Lebih Mudah dan Menyenangkan.</p>
+    </div>
+    <div>
+      <b style="color:#fff;">Menu</b>
+      <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#materi">Materi</a></li>
+        <li><a href="#latihan">Latihan</a></li>
+        <li><a href="#game">Game</a></li>
+        <li><a href="#kamus">Kamus</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Akuntansi Seru</div>
+</footer>
+
+<script>
+/* ============ STATE ============ */
+const defState={materiDone:[],latihanBest:0,latihanLastCorrect:0,gamePoints:0,badges:[]};
+let state=load();
+function load(){try{const s=localStorage.getItem('akuntansi_seru_v2');return s?JSON.parse(s):structuredClone(defState);}catch(e){return structuredClone(defState);}}
+function save(){try{localStorage.setItem('akuntansi_seru_v2',JSON.stringify(state));}catch(e){}}
+
+/* ============ NAVBAR ============ */
+const hamBtn=document.getElementById('hamBtn'), navLinks=document.getElementById('navLinks');
+hamBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+/* ============ OVERVIEW CARDS ============ */
+const overview=[
+ {ic:'📘',judul:'Dasar-Dasar Akuntansi',desc:'Pengertian, tujuan, dan fungsi akuntansi dalam dunia usaha.',m:0},
+ {ic:'⚖️',judul:'Persamaan Dasar Akuntansi',desc:'Memahami hubungan Aset, Liabilitas, dan Ekuitas.',m:1},
+ {ic:'🔍',judul:'Analisis Transaksi',desc:'Mengidentifikasi akun yang terpengaruh dalam transaksi.',m:2},
+ {ic:'📓',judul:'Jurnal Umum',desc:'Mencatat transaksi secara kronologis dengan benar.',m:3},
+ {ic:'📚',judul:'Buku Besar',desc:'Mengelompokkan transaksi berdasarkan jenis akun.',m:4},
+ {ic:'📊',judul:'Laporan Keuangan',desc:'Menyusun laporan laba rugi, ekuitas, dan neraca.',m:5},
+];
+const ovGrid=document.getElementById('overviewGrid');
+overview.forEach(o=>{
+  const el=document.createElement('div'); el.className='card';
+  el.innerHTML=`<div class="ic">${o.ic}</div><h3>${o.judul}</h3><p>${o.desc}</p><a href="#materi" class="link-btn" onclick="openMateriTab(${o.m})">Pelajari →</a>`;
+  ovGrid.appendChild(el);
+});
+function openMateriTab(i){ selectMateri(i); }
+
+/* ============ MATERI DATA ============ */
+const materi=[
+{judul:'Dasar-Dasar Akuntansi',sub:[
+ {h:'Pengertian Akuntansi',b:'Akuntansi adalah proses mencatat, mengklasifikasikan, meringkas, dan melaporkan transaksi keuangan suatu usaha agar dapat digunakan untuk pengambilan keputusan. Contoh: Toko Rani mencatat setiap penjualan roti setiap hari agar tahu untung-ruginya.'},
+ {h:'Tujuan Akuntansi',b:'Menyediakan informasi keuangan yang akurat kepada pemilik usaha, membantu pengambilan keputusan bisnis, dan menjadi dasar pelaporan kepada pihak luar seperti bank atau investor.'},
+ {h:'Fungsi Akuntansi',b:'Fungsi pencatatan (recording), fungsi pelaporan (reporting), dan fungsi pertanggungjawaban (accountability) atas pengelolaan keuangan usaha.'},
+ {h:'Pengguna Informasi Akuntansi',b:'Pihak internal: pemilik dan manajer usaha. Pihak eksternal: investor, kreditor/bank, pemerintah (pajak), dan masyarakat.'},
+ {h:'Jenis-Jenis Bidang Akuntansi',b:'Akuntansi Keuangan (laporan untuk pihak luar), Akuntansi Manajemen (untuk pengambilan keputusan internal), Akuntansi Biaya, Akuntansi Perpajakan, dan Auditing (pemeriksaan laporan keuangan).'},
+ {h:'Siklus Akuntansi',b:'Urutan proses: (1) Identifikasi transaksi → (2) Pencatatan ke jurnal → (3) Posting ke buku besar → (4) Neraca saldo → (5) Jurnal penyesuaian → (6) Laporan keuangan → (7) Jurnal penutup.'},
+]},
+{judul:'Persamaan Dasar Akuntansi',sub:[
+ {h:'Rumus Dasar',b:'Aset = Liabilitas + Ekuitas. Rumus ini harus selalu seimbang di kedua sisi, berapa pun jumlah transaksi yang terjadi.'},
+ {h:'Definisi Aset',b:'Aset adalah segala sumber daya yang dimiliki usaha dan memiliki nilai ekonomis, misalnya kas, piutang, perlengkapan, dan peralatan.'},
+ {h:'Definisi Liabilitas',b:'Liabilitas adalah kewajiban atau utang usaha kepada pihak lain yang harus dilunasi di masa depan, misalnya utang usaha dan utang bank.'},
+ {h:'Definisi Ekuitas',b:'Ekuitas adalah hak pemilik atas aset usaha setelah dikurangi liabilitas, sering disebut juga modal pemilik.'},
+ {h:'Contoh Transaksi 1',b:'Pemilik menyetor uang tunai Rp10.000.000 sebagai modal. Aset bertambah Rp10.000.000, Ekuitas bertambah Rp10.000.000. Persamaan: Rp10.000.000 = Rp0 + Rp10.000.000.'},
+ {h:'Contoh Transaksi 2',b:'Membeli peralatan kantor Rp3.000.000 secara kredit. Aset (Peralatan) bertambah Rp3.000.000, Liabilitas (Utang) bertambah Rp3.000.000. Persamaan tetap seimbang.'},
+ {h:'Contoh Transaksi 3',b:'Menerima pendapatan jasa tunai Rp2.000.000. Aset (Kas) bertambah Rp2.000.000, Ekuitas bertambah Rp2.000.000 (karena pendapatan menambah modal).'},
+ {h:'Tabel Perubahan Persamaan',b:'<table class="data"><tr><th>Transaksi</th><th>Aset</th><th>Liabilitas</th><th>Ekuitas</th></tr><tr><td>Setor modal Rp10.000.000</td><td>+10.000.000</td><td>0</td><td>+10.000.000</td></tr><tr><td>Beli peralatan kredit Rp3.000.000</td><td>+3.000.000</td><td>+3.000.000</td><td>0</td></tr><tr><td>Terima pendapatan Rp2.000.000</td><td>+2.000.000</td><td>0</td><td>+2.000.000</td></tr></table>'},
+]},
+{judul:'Analisis Transaksi',sub:[
+ {h:'Cara Mengidentifikasi Transaksi',b:'Setiap transaksi harus memiliki bukti (kuitansi, nota, faktur) dan memengaruhi minimal dua akun — inilah dasar dari sistem pencatatan berpasangan (double entry).'},
+ {h:'Akun yang Terpengaruh',b:'Tentukan akun apa saja yang berubah nilainya akibat transaksi, misalnya Kas, Perlengkapan, Modal, atau Pendapatan.'},
+ {h:'Pengaruh terhadap Aset, Liabilitas, Ekuitas',b:'Setiap transaksi memengaruhi persamaan dasar akuntansi namun hasil akhirnya harus tetap seimbang antara Aset dan (Liabilitas + Ekuitas).'},
+ {h:'Konsep Debit dan Kredit',b:'Debit mencatat penambahan pada Aset/Beban dan pengurangan pada Liabilitas/Ekuitas/Pendapatan. Kredit mencatat kebalikannya: penambahan pada Liabilitas/Ekuitas/Pendapatan dan pengurangan pada Aset/Beban.'},
+ {h:'Tabel Contoh Transaksi',b:'<table class="data"><tr><th>Transaksi</th><th>Akun Terpengaruh</th><th>Debit</th><th>Kredit</th></tr><tr><td>Beli perlengkapan tunai</td><td>Perlengkapan, Kas</td><td>Perlengkapan</td><td>Kas</td></tr><tr><td>Terima pendapatan jasa tunai</td><td>Kas, Pendapatan Jasa</td><td>Kas</td><td>Pendapatan Jasa</td></tr><tr><td>Bayar beban listrik tunai</td><td>Beban Listrik, Kas</td><td>Beban Listrik</td><td>Kas</td></tr></table>'},
+]},
+{judul:'Jurnal Umum',sub:[
+ {h:'Pengertian Jurnal Umum',b:'Jurnal umum adalah catatan kronologis seluruh transaksi keuangan usaha dalam bentuk debit dan kredit sebelum diposting ke buku besar.'},
+ {h:'Fungsi Jurnal Umum',b:'Mencatat seluruh transaksi secara berurutan, menjadi sumber data untuk posting ke buku besar, dan memudahkan penelusuran transaksi.'},
+ {h:'Bentuk Jurnal Umum',b:'Kolom jurnal umum terdiri atas: Tanggal, Keterangan (nama akun), Referensi (Ref), Debit, dan Kredit.'},
+ {h:'10 Contoh Transaksi dan Jurnalnya',b:`<table class="data"><tr><th>Tanggal</th><th>Keterangan</th><th>Ref</th><th>Debit</th><th>Kredit</th></tr>
+ <tr><td>1 Jan</td><td>Kas</td><td>101</td><td>10.000.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Modal</td><td>301</td><td></td><td>10.000.000</td></tr>
+ <tr><td>3 Jan</td><td>Perlengkapan</td><td>103</td><td>500.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Kas</td><td>101</td><td></td><td>500.000</td></tr>
+ <tr><td>5 Jan</td><td>Peralatan</td><td>104</td><td>3.000.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Utang Usaha</td><td>201</td><td></td><td>3.000.000</td></tr>
+ <tr><td>7 Jan</td><td>Kas</td><td>101</td><td>2.000.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Pendapatan Jasa</td><td>401</td><td></td><td>2.000.000</td></tr>
+ <tr><td>9 Jan</td><td>Beban Listrik</td><td>501</td><td>200.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Kas</td><td>101</td><td></td><td>200.000</td></tr>
+ <tr><td>11 Jan</td><td>Piutang Usaha</td><td>102</td><td>1.500.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Pendapatan Jasa</td><td>401</td><td></td><td>1.500.000</td></tr>
+ <tr><td>13 Jan</td><td>Beban Gaji</td><td>502</td><td>900.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Kas</td><td>101</td><td></td><td>900.000</td></tr>
+ <tr><td>15 Jan</td><td>Kas</td><td>101</td><td>1.500.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Piutang Usaha</td><td>102</td><td></td><td>1.500.000</td></tr>
+ <tr><td>18 Jan</td><td>Utang Usaha</td><td>201</td><td>1.000.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Kas</td><td>101</td><td></td><td>1.000.000</td></tr>
+ <tr><td>20 Jan</td><td>Prive</td><td>302</td><td>300.000</td><td></td></tr><tr><td></td><td>&nbsp;&nbsp;Kas</td><td>101</td><td></td><td>300.000</td></tr></table>`},
+]},
+{judul:'Buku Besar',sub:[
+ {h:'Pengertian Buku Besar',b:'Buku besar adalah kumpulan akun yang digunakan untuk mencatat secara terperinci perubahan nilai dari masing-masing akun hasil posting dari jurnal umum.'},
+ {h:'Fungsi Buku Besar',b:'Mengelompokkan transaksi berdasarkan jenis akun agar mudah diketahui saldo akhir tiap akun, sebagai dasar penyusunan neraca saldo.'},
+ {h:'Posting Jurnal ke Buku Besar',b:'Setiap baris debit pada jurnal dipindahkan ke sisi debit akun terkait di buku besar, begitu pula sebaliknya untuk kredit.'},
+ {h:'Saldo Normal Akun',b:'Aset & Beban bersaldo normal Debit. Liabilitas, Ekuitas & Pendapatan bersaldo normal Kredit.'},
+ {h:'Contoh Posting Sederhana (Akun Kas)',b:'<table class="data"><tr><th>Tanggal</th><th>Keterangan</th><th>Debit</th><th>Kredit</th><th>Saldo</th></tr><tr><td>1 Jan</td><td>Setoran modal</td><td>10.000.000</td><td></td><td>10.000.000</td></tr><tr><td>3 Jan</td><td>Beli perlengkapan</td><td></td><td>500.000</td><td>9.500.000</td></tr><tr><td>7 Jan</td><td>Pendapatan jasa</td><td>2.000.000</td><td></td><td>11.500.000</td></tr></table>'},
+]},
+{judul:'Laporan Keuangan',sub:[
+ {h:'Laporan Laba Rugi',b:'Laporan yang menyajikan pendapatan dikurangi beban dalam suatu periode untuk mengetahui apakah usaha untung atau rugi.'},
+ {h:'Laporan Perubahan Ekuitas',b:'Menunjukkan perubahan modal pemilik selama satu periode, dipengaruhi oleh laba/rugi dan prive (pengambilan pribadi pemilik).'},
+ {h:'Laporan Posisi Keuangan (Neraca)',b:'Menyajikan posisi Aset, Liabilitas, dan Ekuitas usaha pada tanggal tertentu, sesuai persamaan dasar akuntansi.'},
+ {h:'Hubungan Antar Laporan Keuangan',b:'Laba/rugi dari Laporan Laba Rugi dipindahkan ke Laporan Perubahan Ekuitas, lalu ekuitas akhir dipindahkan ke Neraca.'},
+ {h:'Contoh Laporan Keuangan Perusahaan Jasa',b:'<table class="data"><tr><th colspan="2">Laporan Laba Rugi</th></tr><tr><td>Pendapatan Jasa</td><td>3.500.000</td></tr><tr><td>Beban Listrik</td><td>(200.000)</td></tr><tr><td>Beban Gaji</td><td>(900.000)</td></tr><tr><td><b>Laba Bersih</b></td><td><b>2.400.000</b></td></tr></table>'},
+]},
+];
+const materiTabs=document.getElementById('materiTabs'), materiPanels=document.getElementById('materiPanels');
+materi.forEach((m,i)=>{
+  const t=document.createElement('button'); t.className='mtab'+(i===0?' active':''); t.textContent='Materi '+(i+1);
+  t.onclick=()=>selectMateri(i); materiTabs.appendChild(t);
+  const p=document.createElement('div'); p.className='materi-panel'+(i===0?' active':''); p.id='mpanel'+i;
+  const done=state.materiDone.includes(i);
+  let accHtml='';
+  m.sub.forEach((s,j)=>{ accHtml+=`<div class="acc-item"><button class="acc-head" onclick="toggleAcc(this)">${s.h} <span>＋</span></button><div class="acc-body"><div class="acc-body-in">${s.b}</div></div></div>`; });
+  p.innerHTML=`<h3>Materi ${i+1}: ${m.judul} ${done?'<span class="chip">✓ Selesai</span>':''}</h3>${accHtml}
+   <div class="materi-nav">
+     <button class="btn btn-outline" onclick="selectMateri(${i-1})" ${i===0?'disabled style="opacity:.3;"':''}>← Sebelumnya</button>
+     <button class="btn btn-primary" onclick="markDone(${i})">✓ Tandai Sudah Dipelajari</button>
+     <button class="btn btn-outline" onclick="selectMateri(${i+1})" ${i===materi.length-1?'disabled style="opacity:.3;"':''}>Selanjutnya →</button>
+   </div>`;
+  materiPanels.appendChild(p);
+});
+function selectMateri(i){
+  if(i<0||i>=materi.length) return;
+  document.querySelectorAll('.mtab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+  document.querySelectorAll('.materi-panel').forEach((p,idx)=>p.classList.toggle('active',idx===i));
+  document.getElementById('materi').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function toggleAcc(btn){ btn.parentElement.classList.toggle('open'); }
+function markDone(i){
+  if(!state.materiDone.includes(i)){ state.materiDone.push(i); save(); checkBadges(); refreshProgress(); rebuildMateriPanel(i); }
+}
+function rebuildMateriPanel(i){
+  const p=document.getElementById('mpanel'+i);
+  const h3=p.querySelector('h3');
+  if(!h3.querySelector('.chip')) h3.innerHTML+=' <span class="chip">✓ Selesai</span>';
+}
+
+/* ============ VIDEO (simulasi) ============ */
+const videos=[
+ {judul:'Mengenal Akuntansi',durasi:'4:32',desc:'Pengantar dasar tentang apa itu akuntansi.'},
+ {judul:'Persamaan Dasar Akuntansi',durasi:'6:10',desc:'Memahami Aset = Liabilitas + Ekuitas.'},
+ {judul:'Debit dan Kredit',durasi:'5:48',desc:'Cara menentukan posisi debit dan kredit.'},
+ {judul:'Jurnal Umum',durasi:'7:02',desc:'Langkah mencatat transaksi ke jurnal umum.'},
+ {judul:'Siklus Akuntansi',durasi:'8:15',desc:'Tahapan lengkap siklus akuntansi perusahaan jasa.'},
+];
+const videoGrid=document.getElementById('videoGrid');
+videos.forEach((v,i)=>{
+  const el=document.createElement('div'); el.className='vidcard';
+  el.innerHTML=`<div class="vidthumb" id="vthumb${i}" onclick="playVideo(${i})"><div class="playbtn">▶</div></div><div class="vidbody"><h4>${v.judul}</h4><p>${v.desc} · ${v.durasi}</p></div>`;
+  videoGrid.appendChild(el);
+});
+function playVideo(i){
+  const t=document.getElementById('vthumb'+i);
+  const v=videos[i];
+  t.innerHTML=`<div class="vidplaying">▶️ Memutar: <b>${v.judul}</b><br><span style="opacity:.7;">(Simulasi video — durasi ${v.durasi})</span></div>`;
+  setTimeout(()=>{ t.innerHTML='<div class="playbtn">▶</div>'; },3500);
+}
+
+/* ============ LATIHAN (15 soal) ============ */
+const bank=[
+ {q:'Apa pengertian akuntansi yang paling tepat?',o:['Proses menjual barang','Proses mencatat & melaporkan transaksi keuangan','Proses membeli saham','Proses mengiklankan produk'],c:1,e:'Akuntansi adalah proses mencatat, mengklasifikasikan, dan melaporkan transaksi keuangan.'},
+ {q:'Rumus persamaan dasar akuntansi yang benar adalah...',o:['Aset = Liabilitas + Ekuitas','Aset = Ekuitas - Liabilitas','Liabilitas = Aset + Ekuitas','Ekuitas = Aset + Liabilitas'],c:0,e:'Persamaan dasar akuntansi: Aset = Liabilitas + Ekuitas.'},
+ {q:'Berikut yang termasuk contoh Aset adalah...',o:['Utang Bank','Modal Pemilik','Kas','Pendapatan'],c:2,e:'Kas termasuk Aset karena merupakan sumber daya milik usaha.'},
+ {q:'Utang usaha kepada pemasok termasuk dalam akun...',o:['Aset','Liabilitas','Ekuitas','Pendapatan'],c:1,e:'Utang usaha adalah kewajiban yang harus dibayar, termasuk Liabilitas.'},
+ {q:'Modal pemilik dalam akuntansi disebut juga...',o:['Liabilitas','Aset','Ekuitas','Beban'],c:2,e:'Modal pemilik adalah bagian dari Ekuitas.'},
+ {q:'Jika Kas bertambah, maka dicatat di sisi...',o:['Debit','Kredit','Tidak dicatat','Debit dan Kredit'],c:0,e:'Aset bertambah dicatat di sisi Debit.'},
+ {q:'Jika Modal bertambah, maka dicatat di sisi...',o:['Debit','Kredit','Tidak dicatat','Debit dan Kredit'],c:1,e:'Ekuitas bertambah dicatat di sisi Kredit.'},
+ {q:'Membeli perlengkapan tunai akan memengaruhi akun...',o:['Kas & Perlengkapan','Modal & Pendapatan','Utang & Modal','Piutang & Beban'],c:0,e:'Kas berkurang (Kredit), Perlengkapan bertambah (Debit).'},
+ {q:'Menerima pendapatan jasa tunai akan dicatat sebagai...',o:['Kas (Debit), Pendapatan (Kredit)','Kas (Kredit), Pendapatan (Debit)','Piutang (Debit), Modal (Kredit)','Kas (Debit), Beban (Kredit)'],c:0,e:'Kas bertambah (Debit), Pendapatan Jasa bertambah (Kredit).'},
+ {q:'Jurnal umum digunakan untuk...',o:['Mencatat transaksi secara kronologis','Membuat iklan usaha','Menghitung pajak tahunan','Menyimpan uang tunai'],c:0,e:'Jurnal umum mencatat transaksi secara berurutan waktu (kronologis).'},
+ {q:'Kolom yang TIDAK terdapat pada jurnal umum adalah...',o:['Tanggal','Keterangan','Debit','Diskon'],c:3,e:'Jurnal umum berisi Tanggal, Keterangan, Ref, Debit, dan Kredit — tidak ada kolom Diskon.'},
+ {q:'Fungsi utama buku besar adalah...',o:['Mengelompokkan transaksi per akun','Mencetak struk belanja','Membuat laporan pemasaran','Menghitung gaji karyawan'],c:0,e:'Buku besar mengumpulkan transaksi berdasarkan jenis akun masing-masing.'},
+ {q:'Saldo normal akun Beban berada di sisi...',o:['Debit','Kredit','Tidak memiliki saldo normal','Debit dan Kredit'],c:0,e:'Beban memiliki saldo normal Debit, sama seperti Aset.'},
+ {q:'Laporan yang menunjukkan untung/rugi usaha disebut...',o:['Neraca','Laporan Laba Rugi','Buku Besar','Jurnal Umum'],c:1,e:'Laporan Laba Rugi menyajikan pendapatan dikurangi beban untuk mengetahui laba/rugi.'},
+ {q:'Mengapa jumlah debit dan kredit dalam jurnal harus sama?',o:['Supaya laporan terlihat rapi','Karena aturan pencatatan berpasangan (double entry)','Agar mudah dihitung','Tidak ada alasan khusus'],c:1,e:'Sistem akuntansi menggunakan pencatatan berpasangan sehingga debit dan kredit harus selalu seimbang.'},
+];
+let qIdx=0,qScoreCorrect=0,qAnswered=false;
+function renderQuiz(){
+  qIdx=0; qScoreCorrect=0;
+  renderQuestion();
+}
+function renderQuestion(){
+  const area=document.getElementById('quizArea');
+  if(qIdx>=bank.length){ renderQuizResult(); return; }
+  const q=bank[qIdx]; qAnswered=false;
+  area.innerHTML=`<div class="quiz-card">
+    <div class="quiz-top"><span>Soal ${qIdx+1} dari ${bank.length}</span><span>✅ Benar: ${qScoreCorrect}</span></div>
+    <p class="quiz-q">${q.q}</p>
+    <div class="quiz-opts" id="qopts"></div>
+    <div class="explain" id="qexplain"></div>
+    <div class="quiz-foot"><button class="btn btn-primary" id="qnext" style="display:none;">Lanjut →</button></div>
+  </div>`;
+  const opts=document.getElementById('qopts');
+  q.o.forEach((o,i)=>{
+    const b=document.createElement('button'); b.className='qopt'; b.textContent=o;
+    b.onclick=()=>answerQuiz(i); opts.appendChild(b);
+  });
+  document.getElementById('qnext').onclick=()=>{ qIdx++; renderQuestion(); };
+}
+function answerQuiz(i){
+  if(qAnswered) return; qAnswered=true;
+  const q=bank[qIdx];
+  document.querySelectorAll('#qopts .qopt').forEach((b,idx)=>{
+    b.disabled=true;
+    if(idx===q.c) b.classList.add('correct');
+    else if(idx===i) b.classList.add('wrong');
+  });
+  if(i===q.c) qScoreCorrect++;
+  const ex=document.getElementById('qexplain');
+  ex.style.display='block';
+  ex.innerHTML=(i===q.c?'✅ <b>Benar!</b> ':'❌ <b>Kurang tepat.</b> ')+q.e;
+  document.getElementById('qnext').style.display='inline-flex';
+}
+function renderQuizResult(){
+  const pct=Math.round((qScoreCorrect/bank.length)*100);
+  let kategori='Perlu Belajar Lagi', warna='var(--red)', bg='#FBE4E0';
+  if(pct>=90){kategori='Sangat Baik';warna='var(--green)';bg='#E3F6E9';}
+  else if(pct>=80){kategori='Baik';warna='var(--teal)';bg='#DFF2F2';}
+  else if(pct>=70){kategori='Cukup';warna='var(--gold)';bg='#FFF4E2';}
+  state.latihanBest=Math.max(state.latihanBest,pct);
+  state.latihanLastCorrect=qScoreCorrect;
+  save(); checkBadges(); refreshProgress();
+  document.getElementById('quizArea').innerHTML=`<div class="quiz-card result-card">
+    <p style="color:var(--sub);font-weight:700;margin:0;">HASIL LATIHANMU</p>
+    <div class="score-big">${pct}%</div>
+    <div class="kategori" style="background:${bg};color:${warna};">${kategori}</div>
+    <p style="color:var(--sub);">Jawaban benar: <b>${qScoreCorrect}</b> dari <b>${bank.length}</b> &nbsp;|&nbsp; Salah: <b>${bank.length-qScoreCorrect}</b></p>
+    <button class="btn btn-primary" onclick="renderQuiz()">🔄 Ulangi Latihan</button>
+  </div>`;
+}
+renderQuiz();
+
+/* ============ GAME TABS ============ */
+document.querySelectorAll('.gtab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.gtab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.gpanel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('gpanel'+t.dataset.g).classList.add('active');
+}));
+
+/* ---- GAME 1: Tebak Akun ---- */
+const g1data=[
+ {trx:'Membeli perlengkapan secara tunai Rp500.000.',o:['Kas & Perlengkapan','Modal & Pendapatan','Kas & Modal','Perlengkapan & Utang'],c:0,e:'Kas berkurang, Perlengkapan bertambah.'},
+ {trx:'Pemilik menyetor uang tunai Rp5.000.000 sebagai modal.',o:['Kas & Pendapatan','Kas & Modal','Modal & Beban','Piutang & Modal'],c:1,e:'Kas bertambah, Modal bertambah.'},
+ {trx:'Menerima pembayaran jasa dari pelanggan Rp750.000 tunai.',o:['Kas & Pendapatan Jasa','Kas & Utang','Piutang & Modal','Kas & Beban'],c:0,e:'Kas bertambah, Pendapatan Jasa bertambah.'},
+ {trx:'Membayar beban listrik Rp200.000 secara tunai.',o:['Kas & Modal','Beban Listrik & Kas','Utang & Kas','Pendapatan & Kas'],c:1,e:'Beban Listrik bertambah, Kas berkurang.'},
+ {trx:'Membeli peralatan kantor Rp2.000.000 secara kredit (utang).',o:['Peralatan & Utang Usaha','Kas & Peralatan','Modal & Peralatan','Peralatan & Pendapatan'],c:0,e:'Peralatan bertambah, Utang Usaha bertambah.'},
+ {trx:'Membayar utang usaha Rp1.000.000 secara tunai.',o:['Utang Usaha & Kas','Kas & Modal','Piutang & Kas','Modal & Utang'],c:0,e:'Utang Usaha berkurang, Kas berkurang.'},
+ {trx:'Menerima pelunasan piutang dari pelanggan Rp1.200.000.',o:['Kas & Piutang Usaha','Kas & Pendapatan','Piutang & Modal','Kas & Utang'],c:0,e:'Kas bertambah, Piutang Usaha berkurang.'},
+ {trx:'Pemilik mengambil uang tunai Rp300.000 untuk keperluan pribadi (prive).',o:['Kas & Prive','Kas & Beban','Modal & Pendapatan','Kas & Utang'],c:0,e:'Kas berkurang, Prive bertambah (mengurangi modal).'},
+];
+let g1order=[],g1i=0,g1playing=false;
+function shuffle(arr){ return [...arr].map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]); }
+document.getElementById('g1start').onclick=()=>{ state.gamePoints=state.gamePoints; g1order=shuffle(g1data.map((_,i)=>i)); g1i=0; document.getElementById('g1score').textContent='0'; g1playing=true; loadG1(); };
+function loadG1(){
+  if(g1i>=g1order.length){ document.getElementById('g1trx').textContent='🎉 Permainan selesai! Tekan Mulai untuk main lagi.'; document.getElementById('g1choices').innerHTML=''; document.getElementById('g1num').textContent=g1order.length; return; }
+  const d=g1data[g1order[g1i]];
+  document.getElementById('g1trx').textContent='💬 '+d.trx;
+  document.getElementById('g1num').textContent=g1i+1;
+  const c=document.getElementById('g1choices'); c.innerHTML=''; document.getElementById('g1fb').textContent='';
+  d.o.forEach((o,idx)=>{ const b=document.createElement('button'); b.className='choicebtn'; b.textContent=o; b.onclick=()=>answerG1(idx); c.appendChild(b); });
+}
+function answerG1(idx){
+  const d=g1data[g1order[g1i]]; const fb=document.getElementById('g1fb');
+  if(idx===d.c){ fb.textContent='✅ Benar! '+d.e; fb.className='gfeedback ok'; document.getElementById('g1score').textContent=(+document.getElementById('g1score').textContent)+1; state.gamePoints+=10; }
+  else{ fb.textContent='❌ Kurang tepat. '+d.e; fb.className='gfeedback no'; }
+  save(); checkBadges(); refreshProgress();
+  g1i++; setTimeout(loadG1,1300);
+}
+
+/* ---- GAME 2: Debit / Kredit ---- */
+const g2data=[
+ {trx:'Kas bertambah',a:'Debit'},{trx:'Modal bertambah',a:'Kredit'},{trx:'Utang usaha bertambah',a:'Kredit'},
+ {trx:'Perlengkapan bertambah',a:'Debit'},{trx:'Pendapatan jasa bertambah',a:'Kredit'},{trx:'Beban gaji bertambah',a:'Debit'},
+ {trx:'Kas berkurang',a:'Kredit'},{trx:'Piutang usaha bertambah',a:'Debit'},
+];
+let g2order=[],g2i=0,g2timerId=null,g2time=10;
+document.getElementById('g2start').onclick=()=>{ g2order=shuffle(g2data.map((_,i)=>i)); g2i=0; document.getElementById('g2score').textContent='0'; loadG2(); };
+function loadG2(){
+  clearInterval(g2timerId);
+  if(g2i>=g2order.length){ document.getElementById('g2trx').textContent='🎉 Permainan selesai! Tekan Mulai untuk main lagi.'; document.getElementById('g2num').textContent=g2order.length; document.getElementById('g2timer').textContent='-'; return; }
+  const d=g2data[g2order[g2i]];
+  document.getElementById('g2trx').textContent='💬 "'+d.trx+'"';
+  document.getElementById('g2num').textContent=g2i+1;
+  document.getElementById('g2fb').textContent='';
+  g2time=10; document.getElementById('g2timer').textContent=g2time;
+  g2timerId=setInterval(()=>{ g2time--; document.getElementById('g2timer').textContent=g2time; if(g2time<=0){ clearInterval(g2timerId); answerG2(''); } },1000);
+}
+document.getElementById('g2debit').onclick=()=>answerG2('Debit');
+document.getElementById('g2kredit').onclick=()=>answerG2('Kredit');
+function answerG2(pil){
+  clearInterval(g2timerId);
+  const d=g2data[g2order[g2i]]; const fb=document.getElementById('g2fb');
+  if(pil===d.a){ fb.textContent='✅ Benar! Jawabannya '+d.a+'.'; fb.className='gfeedback ok'; document.getElementById('g2score').textContent=(+document.getElementById('g2score').textContent)+1; state.gamePoints+=10; }
+  else{ fb.textContent=(pil===''?'⏰ Waktu habis! ':'❌ Kurang tepat. ')+'Jawaban benar: '+d.a+'.'; fb.className='gfeedback no'; }
+  save(); checkBadges(); refreshProgress();
+  g2i++; setTimeout(loadG2,1300);
+}
+
+/* ---- GAME 3: Jurnal Cepat ---- */
+const akunList=['Kas','Perlengkapan','Peralatan','Piutang Usaha','Utang Usaha','Modal','Pendapatan Jasa','Beban Listrik','Beban Gaji'];
+const g3data=[
+ {trx:'Pemilik menyetor uang tunai Rp5.000.000 sebagai modal.',debit:'Kas',kredit:'Modal',nom:5000000},
+ {trx:'Membeli perlengkapan tunai Rp400.000.',debit:'Perlengkapan',kredit:'Kas',nom:400000},
+ {trx:'Menerima pendapatan jasa tunai Rp600.000.',debit:'Kas',kredit:'Pendapatan Jasa',nom:600000},
+ {trx:'Membayar beban listrik tunai Rp150.000.',debit:'Beban Listrik',kredit:'Kas',nom:150000},
+ {trx:'Membeli peralatan kredit Rp2.000.000.',debit:'Peralatan',kredit:'Utang Usaha',nom:2000000},
+ {trx:'Membayar beban gaji tunai Rp800.000.',debit:'Beban Gaji',kredit:'Kas',nom:800000},
+];
+let g3order=[],g3i=0;
+document.getElementById('g3start').onclick=()=>{
+  g3order=shuffle(g3data.map((_,i)=>i)); g3i=0; document.getElementById('g3score').textContent='0';
+  document.getElementById('g3form').style.display='flex';
+  const selD=document.getElementById('g3debit'), selK=document.getElementById('g3kredit');
+  selD.innerHTML=akunList.map(a=>`<option>${a}</option>`).join('');
+  selK.innerHTML=akunList.map(a=>`<option>${a}</option>`).join('');
+  loadG3();
+};
+function loadG3(){
+  if(g3i>=g3order.length){ document.getElementById('g3trx').textContent='🎉 Permainan selesai! Tekan Mulai untuk main lagi.'; document.getElementById('g3num').textContent=g3order.length; document.getElementById('g3form').style.display='none'; return; }
+  const d=g3data[g3order[g3i]];
+  document.getElementById('g3trx').textContent='💬 '+d.trx;
+  document.getElementById('g3num').textContent=g3i+1;
+  document.getElementById('g3fb').textContent='';
+  document.getElementById('g3nom').value='';
+}
+document.getElementById('g3check').onclick=()=>{
+  const d=g3data[g3order[g3i]]; const fb=document.getElementById('g3fb');
+  const debit=document.getElementById('g3debit').value, kredit=document.getElementById('g3kredit').value;
+  const nom=Number(document.getElementById('g3nom').value.replace(/\D/g,''));
+  if(debit===d.debit && kredit===d.kredit && nom===d.nom){ fb.textContent='✅ Benar! Jurnal sudah tepat.'; fb.className='gfeedback ok'; document.getElementById('g3score').textContent=(+document.getElementById('g3score').textContent)+1; state.gamePoints+=15; }
+  else{ fb.textContent=`❌ Kurang tepat. Jawaban benar: ${d.debit} (Debit) / ${d.kredit} (Kredit) sebesar Rp${d.nom.toLocaleString('id-ID')}.`; fb.className='gfeedback no'; }
+  save(); checkBadges(); refreshProgress();
+  g3i++; setTimeout(loadG3,1600);
+};
+
+/* ============ KALKULATOR DASAR ============ */
+let calcExpr='';
+const calcKeys=document.getElementById('calcKeys');
+['7','8','9','÷','4','5','6','×','1','2','3','−','0','.','=','+','C'].forEach(k=>{
+  const b=document.createElement('button'); b.textContent=k;
+  if(['÷','×','−','+'].includes(k)) b.className='op';
+  if(k==='=') b.className='eq';
+  b.onclick=()=>calcPress(k);
+  calcKeys.appendChild(b);
+});
+function calcPress(k){
+  const disp=document.getElementById('calcDisplay');
+  if(k==='C'){ calcExpr=''; disp.textContent='0'; return; }
+  if(k==='='){
+    try{
+      const safe=calcExpr.replace(/÷/g,'/').replace(/×/g,'*').replace(/−/g,'-');
+      if(!/^[0-9+\-*/.\s]+$/.test(safe)) throw new Error('invalid');
+      const result=Function('"use strict";return ('+safe+')')();
+      disp.textContent=String(result);
+      calcExpr=String(result);
+    }catch(e){ disp.textContent='Error'; calcExpr=''; }
+    return;
+  }
+  calcExpr+=k;
+  disp.textContent=calcExpr;
+}
+
+/* ============ KALKULATOR PERSAMAAN AKUNTANSI ============ */
+document.getElementById('peHitung').onclick=()=>{
+  const aEl=document.getElementById('peAset'), lEl=document.getElementById('peLiab'), eEl=document.getElementById('peEku');
+  const a=aEl.value.trim(), l=lEl.value.trim(), e=eEl.value.trim();
+  const res=document.getElementById('peResult'); res.style.display='block';
+  const filled=[a,l,e].filter(v=>v!=='').length;
+  if(filled<2){ res.textContent='⚠️ Isi minimal dua nilai untuk menghitung nilai ketiga.'; return; }
+  if(a===''){ const val=Number(l||0)+Number(e||0); aEl.value=val; res.textContent=`Aset = Liabilitas + Ekuitas = Rp${val.toLocaleString('id-ID')}`; }
+  else if(l===''){ const val=Number(a)-Number(e||0); lEl.value=val; res.textContent=`Liabilitas = Aset − Ekuitas = Rp${val.toLocaleString('id-ID')}`; }
+  else{ const val=Number(a)-Number(l||0); eEl.value=val; res.textContent=`Ekuitas = Aset − Liabilitas = Rp${val.toLocaleString('id-ID')}`; }
+};
+
+/* ============ KAMUS ============ */
+const kamus=[
+ {t:'Aset',d:'Sumber daya yang dimiliki usaha dan bernilai ekonomis.',e:'Contoh: kas, piutang, peralatan.'},
+ {t:'Liabilitas',d:'Kewajiban/utang usaha kepada pihak lain.',e:'Contoh: utang usaha, utang bank.'},
+ {t:'Ekuitas',d:'Hak pemilik atas aset usaha setelah dikurangi liabilitas.',e:'Disebut juga modal pemilik.'},
+ {t:'Pendapatan',d:'Penambahan kekayaan usaha dari hasil kegiatan usaha.',e:'Contoh: pendapatan jasa, pendapatan penjualan.'},
+ {t:'Beban',d:'Pengorbanan ekonomis yang dikeluarkan usaha untuk memperoleh pendapatan.',e:'Contoh: beban listrik, beban gaji.'},
+ {t:'Kas',d:'Uang tunai dan setara kas yang dimiliki usaha.',e:'Contoh: uang di laci kasir, saldo rekening giro.'},
+ {t:'Piutang',d:'Hak tagih usaha kepada pihak lain akibat penjualan kredit.',e:'Contoh: piutang usaha kepada pelanggan.'},
+ {t:'Utang',d:'Kewajiban usaha untuk membayar kepada pihak lain.',e:'Contoh: utang kepada pemasok.'},
+ {t:'Modal',d:'Setoran pemilik ke dalam usaha, bagian dari ekuitas.',e:'Contoh: modal awal pendirian usaha.'},
+ {t:'Prive',d:'Pengambilan uang/aset usaha oleh pemilik untuk keperluan pribadi.',e:'Prive mengurangi ekuitas pemilik.'},
+ {t:'Debit',d:'Posisi pencatatan di sisi kiri akun.',e:'Menambah Aset/Beban, mengurangi Liabilitas/Ekuitas/Pendapatan.'},
+ {t:'Kredit',d:'Posisi pencatatan di sisi kanan akun.',e:'Menambah Liabilitas/Ekuitas/Pendapatan, mengurangi Aset/Beban.'},
+ {t:'Jurnal',d:'Catatan transaksi keuangan secara kronologis.',e:'Jurnal umum adalah bentuk jurnal paling dasar.'},
+ {t:'Buku Besar',d:'Kumpulan akun hasil posting dari jurnal.',e:'Digunakan untuk mengetahui saldo akhir tiap akun.'},
+ {t:'Neraca',d:'Laporan posisi keuangan yang menunjukkan Aset, Liabilitas, dan Ekuitas.',e:'Disebut juga Laporan Posisi Keuangan.'},
+ {t:'Laba Rugi',d:'Selisih antara pendapatan dan beban dalam suatu periode.',e:'Laba jika pendapatan > beban, rugi jika sebaliknya.'},
+ {t:'Transaksi',d:'Kejadian ekonomi yang memengaruhi posisi keuangan usaha.',e:'Contoh: pembelian, penjualan, pembayaran utang.'},
+ {t:'Saldo',d:'Selisih antara total debit dan kredit suatu akun.',e:'Saldo normal akun bergantung pada jenis akunnya.'},
+ {t:'Akuntansi',d:'Proses mencatat, mengklasifikasi, dan melaporkan transaksi keuangan.',e:'Digunakan untuk pengambilan keputusan usaha.'},
+ {t:'Laporan Keuangan',d:'Hasil akhir proses akuntansi berupa laba rugi, perubahan ekuitas, dan neraca.',e:'Disusun setiap akhir periode akuntansi.'},
+ {t:'Perlengkapan',d:'Barang habis pakai yang digunakan dalam kegiatan usaha.',e:'Contoh: alat tulis kantor, kertas.'},
+ {t:'Peralatan',d:'Barang yang digunakan dalam jangka panjang untuk operasional usaha.',e:'Contoh: komputer, meja kantor.'},
+ {t:'Persediaan',d:'Barang dagang yang dimiliki usaha untuk dijual kembali.',e:'Contoh: stok barang di toko.'},
+ {t:'Penyusutan',d:'Alokasi biaya perolehan aset tetap selama masa manfaatnya.',e:'Contoh: penyusutan peralatan setiap tahun.'},
+ {t:'Akumulasi Penyusutan',d:'Jumlah total penyusutan suatu aset sejak awal digunakan.',e:'Mengurangi nilai buku aset tetap.'},
+ {t:'Modal Awal',d:'Nilai modal pemilik pada awal periode akuntansi.',e:'Digunakan sebagai dasar laporan perubahan ekuitas.'},
+ {t:'Modal Akhir',d:'Nilai modal pemilik pada akhir periode setelah memperhitungkan laba/rugi dan prive.',e:'Modal Akhir = Modal Awal + Laba − Prive.'},
+ {t:'Pendapatan Jasa',d:'Pendapatan yang diperoleh dari penyerahan jasa kepada pelanggan.',e:'Contoh: pendapatan jasa servis, pendapatan jasa konsultasi.'},
+ {t:'Beban Gaji',d:'Biaya yang dikeluarkan untuk membayar gaji karyawan.',e:'Dicatat sebagai pengurang pendapatan dalam laporan laba rugi.'},
+ {t:'Beban Sewa',d:'Biaya yang dikeluarkan untuk menyewa tempat atau aset usaha.',e:'Contoh: sewa ruko per bulan.'},
+];
+const kamusGrid=document.getElementById('kamusGrid'), kamusDetail=document.getElementById('kamusDetail');
+function renderKamus(list){
+  kamusGrid.innerHTML='';
+  list.forEach(k=>{ const b=document.createElement('button'); b.className='kword'; b.textContent=k.t; b.onclick=()=>showKamusDetail(k); kamusGrid.appendChild(b); });
+}
+function showKamusDetail(k){
+  kamusDetail.className='kdetail show';
+  kamusDetail.innerHTML=`<h3>${k.t}</h3><p><b>Pengertian:</b> ${k.d}</p><p><b>Contoh:</b> ${k.e}</p>`;
+  kamusDetail.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+renderKamus(kamus);
+document.getElementById('kamusSearch').addEventListener('input',(e)=>{
+  const q=e.target.value.toLowerCase().trim();
+  renderKamus(kamus.filter(k=>k.t.toLowerCase().includes(q)));
+});
+
+/* ============ BADGES ============ */
+const badgeList=[
+ {id:'pemula',ic:'🌱',nama:'Pemula',cond:s=>s.materiDone.length>=1},
+ {id:'rajin',ic:'📚',nama:'Rajin Belajar',cond:s=>s.materiDone.length>=3},
+ {id:'jago',ic:'🧮',nama:'Jago Akuntansi',cond:s=>s.latihanBest>=90},
+ {id:'gmaster',ic:'🎮',nama:'Game Master',cond:s=>s.gamePoints>=100},
+ {id:'akuntan',ic:'🏆',nama:'Akuntan Muda',cond:s=>s.materiDone.length>=6},
+];
+function checkBadges(){ badgeList.forEach(b=>{ if(b.cond(state) && !state.badges.includes(b.id)) state.badges.push(b.id); }); save(); renderBadges(); }
+function renderBadges(){
+  const g=document.getElementById('badgeGrid'); g.innerHTML='';
+  badgeList.forEach(b=>{
+    const un=state.badges.includes(b.id);
+    g.innerHTML+=`<div class="badgec ${un?'':'locked'}"><div class="bic">${b.ic}</div><h4>${b.nama}</h4><p style="font-size:.76rem;color:var(--sub);margin:0;">${un?'Terbuka!':'Terkunci'}</p></div>`;
+  });
+}
+
+/* ============ PROGRESS REFRESH ============ */
+function refreshProgress(){
+  const pct=Math.round((state.materiDone.length/6)*100);
+  document.getElementById('homeBar').style.width=pct+'%';
+  document.getElementById('homeMateri').textContent=state.materiDone.length;
+  document.getElementById('homeLatihan').textContent=state.latihanBest;
+  document.getElementById('homePoin').textContent=state.gamePoints;
+  document.getElementById('pBar').style.width=pct+'%';
+  document.getElementById('pMateri').textContent=state.materiDone.length;
+  document.getElementById('pLatihan').textContent=state.latihanLastCorrect;
+  document.getElementById('pGame').textContent=state.gamePoints;
+}
+
+/* ============ TIPS ============ */
+const tips=['Pahami konsep sebelum menghafal rumus.','Biasakan mengidentifikasi akun pada setiap transaksi.','Pahami saldo normal tiap jenis akun.','Rutin berlatih mencatat transaksi ke jurnal.','Selalu periksa kembali keseimbangan debit dan kredit.'];
+const tipsList=document.getElementById('tipsList');
+tips.forEach((t,i)=>{ tipsList.innerHTML+=`<div class="tip-item"><div class="tip-num">${i+1}</div><div>${t}</div></div>`; });
+
+/* ============ FAQ ============ */
+const faqs=[
+ {q:'Apa itu akuntansi?',a:'Akuntansi adalah proses mencatat, mengklasifikasikan, dan melaporkan transaksi keuangan suatu usaha untuk membantu pengambilan keputusan.'},
+ {q:'Apa perbedaan debit dan kredit?',a:'Debit adalah posisi pencatatan di sisi kiri, kredit di sisi kanan. Keduanya digunakan untuk mencatat penambahan/pengurangan nilai akun sesuai jenisnya.'},
+ {q:'Apa itu aset?',a:'Aset adalah sumber daya yang dimiliki usaha dan memiliki nilai ekonomis, seperti kas, piutang, dan peralatan.'},
+ {q:'Apa itu liabilitas?',a:'Liabilitas adalah kewajiban atau utang usaha yang harus dilunasi kepada pihak lain di masa depan.'},
+ {q:'Mengapa jumlah debit dan kredit harus sama?',a:'Karena akuntansi menggunakan sistem pencatatan berpasangan (double entry), setiap transaksi memengaruhi minimal dua akun agar persamaan akuntansi tetap seimbang.'},
+ {q:'Apa fungsi jurnal umum?',a:'Jurnal umum berfungsi mencatat seluruh transaksi secara kronologis sebagai dasar untuk posting ke buku besar.'},
+ {q:'Apa fungsi buku besar?',a:'Buku besar berfungsi mengelompokkan transaksi berdasarkan jenis akun agar diketahui saldo akhir masing-masing akun.'},
+ {q:'Apa itu laporan keuangan?',a:'Laporan keuangan adalah hasil akhir proses akuntansi, terdiri atas laporan laba rugi, perubahan ekuitas, dan neraca.'},
+];
+const faqList=document.getElementById('faqList');
+faqs.forEach(f=>{
+  const el=document.createElement('div'); el.className='faq-item';
+  el.innerHTML=`<button class="faq-q" onclick="this.parentElement.classList.toggle('open')">${f.q}<span>＋</span></button><div class="faq-a">${f.a}</div>`;
+  faqList.appendChild(el);
+});
+
+/* ============ INIT ============ */
+checkBadges();
+refreshProgress();
+</script>
+</body>
+</html>
